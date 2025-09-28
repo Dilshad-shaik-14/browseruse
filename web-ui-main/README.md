@@ -56,6 +56,8 @@ OpenAI GPT-3.5: The application integrates with OpenAI's GPT-3.5 model to proces
 
 LangChain: LangChain is utilized to manage and chain together multiple language model calls, facilitating complex workflows.
 
+Contribution of team making this big project
+
 1. Frontend Developer
 
 Responsibilities:
