@@ -1,151 +1,127 @@
-<img src="./assets/web-ui.png" alt="Browser Use Web UI" width="full"/>
+Problem Statement – Web Navigator AI Agent
 
-<br/>
+Title:
+Autonomous Web Navigator AI Agent for Task Automation
 
-[![GitHub stars](https://img.shields.io/github/stars/browser-use/web-ui?style=social)](https://github.com/browser-use/web-ui/stargazers)
-[![Discord](https://img.shields.io/discord/1303749220842340412?color=7289DA&label=Discord&logo=discord&logoColor=white)](https://link.browser-use.com/discord)
-[![Documentation](https://img.shields.io/badge/Documentation-📕-blue)](https://docs.browser-use.com)
-[![WarmShao](https://img.shields.io/twitter/follow/warmshao?style=social)](https://x.com/warmshao)
+Description:
+Finding information on the web is often repetitive and time-consuming. Users need to perform searches, open multiple websites, extract information, or complete tasks like form filling manually.
 
-This project builds upon the foundation of the [browser-use](https://github.com/browser-use/browser-use), which is designed to make websites accessible for AI agents.
+Problem:
+Manual web navigation for tasks like research, data collection, or monitoring websites takes significant time and effort, especially for repetitive or multi-step processes.
 
-We would like to officially thank [WarmShao](https://github.com/warmshao) for his contribution to this project.
+Proposed Solution:
+Develop a Web Navigator AI Agent that can autonomously perform web tasks based on natural language instructions. The agent can:
 
-**WebUI:** is built on Gradio and supports most of `browser-use` functionalities. This UI is designed to be user-friendly and enables easy interaction with the browser agent.
+Search for information on the web
 
-**Expanded LLM Support:** We've integrated support for various Large Language Models (LLMs), including: Google, OpenAI, Azure OpenAI, Anthropic, DeepSeek, Ollama etc. And we plan to add support for even more models in the future.
+Open multiple websites
 
-**Custom Browser Support:** You can use your own browser with our tool, eliminating the need to re-login to sites or deal with other authentication challenges. This feature also supports high-definition screen recording.
+Extract or summarize relevant content
 
-**Persistent Browser Sessions:** You can choose to keep the browser window open between AI tasks, allowing you to see the complete history and state of AI interactions.
+Simulate user interactions like clicking links or filling forms
 
-<video src="https://github.com/user-attachments/assets/56bc7080-f2e3-4367-af22-6bf2245ff6cb" controls="controls">Your browser does not support playing this video!</video>
+Goal:
+Create a minimal prototype where a user inputs a task (in plain English), and the AI agent demonstrates step-by-step autonomous navigation or simulation of web tasks.
 
-## Installation Guide
+Impact:
 
-### Option 1: Local Installation
+Saves time for repetitive online tasks
 
-Read the [quickstart guide](https://docs.browser-use.com/quickstart#prepare-the-environment) or follow the steps below to get started.
+Helps researchers, students, and professionals quickly gather information
 
-#### Step 1: Clone the Repository
-```bash
-git clone https://github.com/browser-use/web-ui.git
-cd web-ui
-```
+Provides a foundation for intelligent autonomous agents that can interact with the web
+Frontend
 
-#### Step 2: Set Up Python Environment
-We recommend using [uv](https://docs.astral.sh/uv/) for managing the Python environment.
+React 19: The user interface is built using React 19, a popular JavaScript library for building user interfaces.
 
-Using uv (recommended):
-```bash
-uv venv --python 3.11
-```
+Next.js 15 (App Router): Next.js 15 is used for server-side rendering and routing, enhancing the performance and scalability of the application.
 
-Activate the virtual environment:
-- Windows (Command Prompt):
-```cmd
-.venv\Scripts\activate
-```
-- Windows (PowerShell):
-```powershell
-.\.venv\Scripts\Activate.ps1
-```
-- macOS/Linux:
-```bash
-source .venv/bin/activate
-```
+TypeScript 2: TypeScript 2 provides static typing, improving code quality and maintainability.
 
-#### Step 3: Install Dependencies
-Install Python packages:
-```bash
-uv pip install -r requirements.txt
-```
+Tailwind CSS v4: Tailwind CSS v4 is employed for utility-first CSS styling, allowing for rapid and responsive design.
 
-Install Browsers in playwright. 
-```bash
-playwright install --with-deps
-```
-Or you can install specific browsers by running:
-```bash
-playwright install chromium --with-deps
-```
+Radix UI Primitives: Radix UI Primitives offer low-level UI components that are accessible and customizable.
 
-#### Step 4: Configure Environment
-1. Create a copy of the example environment file:
-- Windows (Command Prompt):
-```bash
-copy .env.example .env
-```
-- macOS/Linux/Windows (PowerShell):
-```bash
-cp .env.example .env
-```
-2. Open `.env` in your preferred text editor and add your API keys and other settings
+Backend
 
-#### Step 5: Enjoy the web-ui
-1.  **Run the WebUI:**
-    ```bash
-    python webui.py --ip 127.0.0.1 --port 7788
-    ```
-2. **Access the WebUI:** Open your web browser and navigate to `http://127.0.0.1:7788`.
-3. **Using Your Own Browser(Optional):**
-    - Set `BROWSER_PATH` to the executable path of your browser and `BROWSER_USER_DATA` to the user data directory of your browser. Leave `BROWSER_USER_DATA` empty if you want to use local user data.
-      - Windows
-        ```env
-         BROWSER_PATH="C:\Program Files\Google\Chrome\Application\chrome.exe"
-         BROWSER_USER_DATA="C:\Users\YourUsername\AppData\Local\Google\Chrome\User Data"
-        ```
-        > Note: Replace `YourUsername` with your actual Windows username for Windows systems.
-      - Mac
-        ```env
-         BROWSER_PATH="/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
-         BROWSER_USER_DATA="/Users/YourUsername/Library/Application Support/Google/Chrome"
-        ```
-    - Close all Chrome windows
-    - Open the WebUI in a non-Chrome browser, such as Firefox or Edge. This is important because the persistent browser context will use the Chrome data when running the agent.
-    - Check the "Use Own Browser" option within the Browser Settings.
+Python: The backend is developed in Python, leveraging its simplicity and readability.
 
-### Option 2: Docker Installation
+Playwright: Playwright is used for browser automation, enabling the AI agent to interact with web pages programmatically.
 
-#### Prerequisites
-- Docker and Docker Compose installed
-  - [Docker Desktop](https://www.docker.com/products/docker-desktop/) (For Windows/macOS)
-  - [Docker Engine](https://docs.docker.com/engine/install/) and [Docker Compose](https://docs.docker.com/compose/install/) (For Linux)
+uvicorn: uvicorn serves as the ASGI server for running the application, providing high-performance asynchronous capabilities.
 
-#### Step 1: Clone the Repository
-```bash
-git clone https://github.com/browser-use/web-ui.git
-cd web-ui
-```
+AI Integration
 
-#### Step 2: Configure Environment
-1. Create a copy of the example environment file:
-- Windows (Command Prompt):
-```bash
-copy .env.example .env
-```
-- macOS/Linux/Windows (PowerShell):
-```bash
-cp .env.example .env
-```
-2. Open `.env` in your preferred text editor and add your API keys and other settings
+OpenAI GPT-3.5: The application integrates with OpenAI's GPT-3.5 model to process natural language instructions and generate responses.
 
-#### Step 3: Docker Build and Run
-```bash
-docker compose up --build
-```
-For ARM64 systems (e.g., Apple Silicon Macs), please run follow command:
-```bash
-TARGETPLATFORM=linux/arm64 docker compose up --build
-```
+LangChain: LangChain is utilized to manage and chain together multiple language model calls, facilitating complex workflows.
 
-#### Step 4: Enjoy the web-ui and vnc
-- Web-UI: Open `http://localhost:7788` in your browser
-- VNC Viewer (for watching browser interactions): Open `http://localhost:6080/vnc.html`
-  - Default VNC password: "youvncpassword"
-  - Can be changed by setting `VNC_PASSWORD` in your `.env` file
+1. Frontend Developer
 
-## Changelog
-- [x] **2025/01/26:** Thanks to @vvincent1234. Now browser-use-webui can combine with DeepSeek-r1 to engage in deep thinking!
-- [x] **2025/01/10:** Thanks to @casistack. Now we have Docker Setup option and also Support keep browser open between tasks.[Video tutorial demo](https://github.com/browser-use/web-ui/issues/1#issuecomment-2582511750).
-- [x] **2025/01/06:** Thanks to @richard-devbot. A New and Well-Designed WebUI is released. [Video tutorial demo](https://github.com/warmshao/browser-use-webui/issues/1#issuecomment-2573393113).
+Responsibilities:
+
+Build and style the UI for the agent
+
+Implement input boxes for user instructions
+
+Display agent responses and navigation steps
+
+Integrate frontend with backend API
+Technologies: React, Next.js, TypeScript, Tailwind CSS, Radix UI
+Deliverables: Fully functional, responsive UI
+
+2. Backend Developer
+
+Responsibilities:
+
+Build the backend API to process instructions
+
+Handle routing, data processing, and communication with AI model
+
+Manage sessions and agent state
+
+Implement logging of actions if needed
+Technologies: Python, FastAPI/Flask, uvicorn
+Deliverables: Stable API endpoints connected to frontend
+
+3. AI / Language Model Integration
+
+Responsibilities:
+
+Connect to OpenAI GPT-3.5 or Hugging Face model
+
+Parse natural language instructions and generate actionable steps
+
+Implement LangChain or workflow chaining for multi-step tasks
+
+Test AI responses and improve prompt design
+Technologies: Python, OpenAI API, LangChain
+Deliverables: Functional AI agent capable of generating task steps
+
+4. Browser Automation / Scraping Engineer
+
+Responsibilities:
+
+Implement browser automation with Playwright or Puppeteer
+
+Simulate navigation, clicks, and scraping web content
+
+Ensure agent actions are accurate and reproducible
+
+Handle edge cases like login pages or dynamic content
+Technologies: Playwright, Puppeteer, Python
+Deliverables: Reliable web automation layer integrated with AI
+
+5. Designer / Presentation (PPT & Demo)
+
+Responsibilities:
+
+Design project logo, UI mockups, or color themes
+
+Prepare the hackathon presentation slides
+
+Create demo flow diagrams or screenshots for submission
+
+Ensure the project looks polished for judges
+
+Tools: Canva
