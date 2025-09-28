@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+BrowserUse
 =======
 Problem Statement – Web Navigator AI Agent
 
@@ -129,4 +129,4 @@ Create demo flow diagrams or screenshots for submission
 Ensure the project looks polished for judges
 
 Tools: Canva
->>>>>>> 6d8019359d2c1dddde360bec5ac62c588f542645
+>>>>>>>
