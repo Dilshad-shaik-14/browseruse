@@ -1,7 +1,7 @@
 Problem Statement – Web Navigator AI Agent
 
 Title:
-Autonomous Web Navigator AI Agent for Task Automation
+BrowserUse
 
 Description:
 Finding information on the web is often repetitive and time-consuming. Users need to perform searches, open multiple websites, extract information, or complete tasks like form filling manually.
